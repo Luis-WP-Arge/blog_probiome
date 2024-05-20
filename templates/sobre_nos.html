@@ -1,0 +1,35 @@
+<!-- pages/templates/about.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="section-title">
+        <h1>Sobre nós</h1>
+        <hr>
+    </div>
+
+    <div class="row">
+        {% for Sobre_Nos in tudoSobreNos %}
+        <h2> {{Sobre_Nos.0.title}}</h2>
+        <hr style="width:35%;">
+        <div class="column">
+            <div class="team">
+                <div class="team-img">
+                    <p>{{Sobre_Nos.0.text|safe}}</p>
+                    <hr>
+                    <p style="margin-bottom:1.5cm;"></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="col">
+            <!-- <h1>Gallery</h1> -->
+            <!-- PHOTO GALLERY -->
+            {% for Images in allImages %}
+            <img src="/media/{{Images.0.image}}" alt="" title="">
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

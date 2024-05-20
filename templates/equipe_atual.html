@@ -1,0 +1,28 @@
+<!-- pages/templates/about.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="section-title">
+        <h1>Nossa equipe</h1>
+        <hr>
+    </div>
+    <div class="row">
+        {% for pesquisador in todosPesquisadores %}
+        {% for category in pesquisador.category %}
+         <h2> {{category.0.category}} </h2>
+        <hr style="width:35%;">
+        <div class="column">
+            <div class="team">
+                <div class="team-img">
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+{% endfor %}
+
+</div>
+</div>
+{% endblock content %}

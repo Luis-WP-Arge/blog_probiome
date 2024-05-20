@@ -1,0 +1,28 @@
+<!-- pages/templates/about.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="section-title">
+        <h1>Linha de pesquisa: <em>Setaria viridis</em></h1>
+        <hr>
+    </div>
+
+    <div class="row">
+        {% for Linha_Setaria_cat in allLinha_Setaria %}
+        <h2> {{Linha_Setaria_cat.0.title}}</h2>
+        <hr style="width:35%;">
+        <div class="column">
+            <div class="team">
+                <div class="team-img">
+                    <p>{{Linha_Setaria_cat.0.text|safe}}</p>
+                    <hr>
+                    <p style="margin-bottom:1.5cm;"></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

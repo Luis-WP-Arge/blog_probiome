@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="blog-post">
+    <h2 class="blog-post-title">
+        {{ post.title }}
+    </h2>
+    <p class="blog-post-meta">{{ post.created_at | date:'d, M Y' }} by <a href="#">{{ post.author }}</a>, organism <a href="#">{{ post.organism }}</a></p>
+    {{ post.content|safe }}
+    <hr>
+    <div class="col-md-12 ">
+        <div class="card-body">
+            <!-- comments -->
+            <h2>{{ comments.count }} comentários</h2>
+            <hr>
+            {% for comment in comments %}
+            <div class="comments" style="padding: 10px;">
+                <p class="font-weight-bold">
+                    {{ comment.name }}
+                    <span class=" text-muted font-weight-normal">
+                        {{ comment.created_on }}
+                    </span>
+                </p>
+                {{ comment.body | linebreaks }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-12 card mb-4  mt-3 ">
+        <div class="card-body">
+            {% if new_comment %}
+            <div class="alert alert-success" role="alert">
+                Seu comentário foi enviado para a moderação
+            </div>
+            {% else %}
+            <h3>Deixe um comentário</h3>
+            <form method="post" style="margin-top: 1.3em;">
+                {{ comment_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary  btn-lg">Submeta</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div><!-- /.blog-post -->
+
+{% endblock %}

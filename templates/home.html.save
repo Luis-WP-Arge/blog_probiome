@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h5>
+
+Olá! Essa é nossa nova página web do LGMBV. Aqui serão publicadas novidades de atividades da equipe, notícias em <em>plant science</em>, oportunidades na pós-graduação e em concursos. Sintam-se a vontade para explorar a página, divulgar e entrar em contato.
+</h5>
+<hr style="width:35%;">
+    <h3 class="pb-3 mb-4 font-italic border-bottom">
+        Últimas notícias em <em>plant science</em>:
+    </h3>
+    {% for post in posts %}
+        <div class="blog-post">
+            <h2>
+                <a href="/posts/{{ post.pk }}">{{ post.title }}</a>
+            </h2>
+        <p class="blog-post-meta">{{ post.created_at | date:'d, M Y' }} by <a href="#">{{ post.author }}</a></p>
+            {{ post.abstract|safe }}
+        </div><!-- /.blog-post -->
+    {% endfor %}
+          <nav class="blog-pagination">
+            <a class="btn btn-outline-primary" href="/blog">Posts antigos</a>
+          </nav>
+{% endblock %}

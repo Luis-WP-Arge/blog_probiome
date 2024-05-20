@@ -1,0 +1,33 @@
+<!-- pages/templates/about.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="section-title">
+        <h1>Nossa equipe</h1>
+        <hr>
+    </div>
+    <div class="row">
+        {% for researcher in allResearchers %}
+        <h2> {{researcher.0.category}}</h2>
+        <hr style="width:35%;">
+        <div class="column">
+            <div class="team">
+                <div class="team-img">
+                    <img src="/media/{{researcher.0.image}}" alt="Team Image" width=260vw align="left" hspace="20">
+                    <h3>{{researcher.0.name}}</h3>
+                    <p>{{researcher.0.description|safe}}</p>
+                    <br>
+                    <p><b>E-mail: </b><a href="mailto:{{researcher.0.email}}?subject=Contact from LGMBV webpage">{{researcher.0.email}}</a></p>
+                    <p><b>Lattes: </b><a href="{{researcher.0.lattes}}">{{researcher.0.lattes}} </a></p>
+                    <hr>
+                    <p style="margin-bottom:1.5cm;"></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+<!-- pages/templates/about.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+
+ <div class="container">
+        <div class="section-title">
+            <h1>Publicações</h1>
+            <hr>
+        </div>
+     {% for publicacao in todasPublicacoes %}
+        <div class="column">
+            <div class="team">
+                <div class="team-img">
+                    <h3>{{ publicacao.0.name }}</h3>
+                    <p>{{publicacao.0.description|safe}}</p>
+                    <hr>
+                    <p style="margin-bottom:1.5cm;"></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+ </div>
+
+{% endblock content %}

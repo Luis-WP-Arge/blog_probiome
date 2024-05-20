@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h3>{{ categories }} category</h3>
+<hr>
+
+{% for post in category_posts %}
+<ul>
+    <li>
+        <div class="blog-post">
+              <h2>
+                <a href="/posts/{{ post.pk }}">{{ post.title }}</a>
+              </h2>
+            <p class="blog-post-meta">{{ post.created_at | date:'d, M Y' }} by <a href="#">{{ post.author }}</a>, category <a href="#">{{ post.category }}</a></p>
+            {{ post.abstract|safe }}
+          </div>
+    </li>
+</ul>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- pages/templates/about.html -->
+{% extends 'layout.html' %}
+
+{% block content %}
+
+ <div class="container">
+        <div class="section-title">
+            <h1>Blog</h1>
+            <hr>
+        </div>
+
+        <div class="row">
+            {% for post in posts %}
+            <div class="blog-post">
+                <h2>
+                    <a href="/posts/{{ post.pk }}">{{ post.title }}</a>
+                </h2>
+                <p class="blog-post-meta">{{ post.created_at | date:'d, M Y' }} by <a href="#">{{ post.author }}</a></p>
+                {{ post.abstract|safe }}
+            </div><!-- /.blog-post -->
+            {% endfor %}
+        </div>
+ </div>
+
+{% include "pagination.html" with page=posts %}
+
+{% endblock content %}
