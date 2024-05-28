@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-+y4e0ewuf7rs@8@(s6e(+8+%x)#+((89u_0=k(4=)m!ohft6_q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','146.164.75.124','www.lgmbv.biologia.ufrj.br']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','146.164.75.124','www.lgmbv.biologia.ufrj.br', '4ff86b4b17071fef0eb0d34735b723d6.serveo.net']
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Application definition
 

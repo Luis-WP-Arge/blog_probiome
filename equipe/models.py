@@ -12,9 +12,11 @@ class Equipe_categoria(models.Model):
 class Equipe(models.Model):
     id = models.AutoField
     name = models.CharField(max_length=100)
-    category = models.ForeignKey(Equipe_categoria, on_delete=models.PROTECT)
+    category = models.ForeignKey('Equipe_categoria', on_delete=models.CASCADE, related_name='category', null=False)
+    categoria = models.CharField(max_length=100, unique=False, null=True)
     email = models.CharField(max_length=100)
     lattes = models.CharField(max_length=100)
+    google_scholar = models.CharField(max_length=100, unique=False, null=True)
     description = RichTextField()
     image = models.ImageField(upload_to='equipe', default="")
 

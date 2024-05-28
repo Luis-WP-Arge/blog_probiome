@@ -3,16 +3,17 @@ from .models import Equipe, Team, Ex_Membros, Former
 
 # Create your views here.
 def equipe(request):
-    todosPesquisadores = []
-    catEquipe = Equipe.objects.values('category', 'id')
-    cats = {item['category'] for item in catEquipe}
-    for cat in cats:
-        pesquisador = Equipe.objects.filter(category=cat)
-        todosPesquisadores.append(pesquisador)
+    todosPesquisadores = Equipe.objects.values().order_by('category')
+    return render(request, 'equipe_atual.html',{'todosPesquisadores':todosPesquisadores})
+#    todosPesquisadores = []
+#    catEquipe = Equipe.objects.values('category', 'id')
+#    cats = {item['category'] for item in catEquipe}
+#    for cat in cats:
+#        pesquisador = Equipe.objects.filter(category=cat)
+#        todosPesquisadores.append(pesquisador)
 
-    params = {'todosPesquisadores':todosPesquisadores}
-    return render(request, "team.html", params)
-
+#    params = {'todosPesquisadores':todosPesquisadores}
+#    return render(request, "equipe_atual.html", params)
 
 def ex_membros(request):
     allEx_membros = []

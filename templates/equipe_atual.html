@@ -9,20 +9,26 @@
         <hr>
     </div>
     <div class="row">
-        {% for pesquisador in todosPesquisadores %}
-        {% for category in pesquisador.category %}
-         <h2> {{category.0.category}} </h2>
-        <hr style="width:35%;">
+        {% regroup todosPesquisadores by category_id as pesq_list %}
         <div class="column">
             <div class="team">
                 <div class="team-img">
-                    
+                    {% for categoria in pesq_list %}
+                    <h2>{{ categoria.list.0.categoria }}</h2>
+                    <hr style="width:35%;">
+                       {% for pesquisador in categoria.list %}
+                          <img src="../media/{{ pesquisador.image }}" alt="Team Image" width=260vw align="left" hspace="20">
+                          <h3>{{pesquisador.name|safe}}</h3>
+                          <p>{{pesquisador.description|safe}}</p>
+                          <p><b>E-mail: </b><a href="mailto:{{pesquisador.email}}?subject=Contact from LGMBV webpage">{{pesquisador.email}}</a></p>
+                          <p><b>Lattes: </b><a href="{{pesquisador.lattes}}">{{pesquisador.lattes}}</a></p>
+                          <p><b>Google Scholar: </b><a href="{{pesquisador.google_scholar}}">{{pesquisador.google_scholar}}</a></p>
+                          <p style="margin-bottom:1.5cm;"></p>
+                       {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
-        {% endfor %}
-{% endfor %}
-
 </div>
 </div>
 {% endblock content %}
